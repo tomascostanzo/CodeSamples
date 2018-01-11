@@ -201,22 +201,22 @@ public class algo {
 					continue p;
 				}
 		    	
-			  randomNum = rand.nextInt((max) + 1); //entre 0 et max de entrees et etapes
-			  ArrayList<Integer> NoeudsArrayTemp = new ArrayList<Integer>();
-			  while(nombreMaximumArretesTemp[randomNum] <= 0){
-			  	if(NoeudsArrayTemp.size() == max+1){
-			  		noeudsTemp.remove(randomIndex);
-			  		Tour--;
-			  		continue p;		
-			  	}
-			  	randomNum = rand.nextInt((max) + 1);  	
-			  	if(!NoeudsArrayTemp.contains(randomNum)){
-			  		NoeudsArrayTemp.add(randomNum);
-			  	}
-			  }
-			  nombreMaximumArretesTemp[randomNum] -= 1;
-			  nombreMaximumArretesTemp[noeud] -= 1;
-			  Integer[] pair = {noeud,randomNum};
+				randomNum = rand.nextInt((max) + 1); //entre 0 et max de entrees et etapes
+				ArrayList<Integer> NoeudsArrayTemp = new ArrayList<Integer>();
+				while(nombreMaximumArretesTemp[randomNum] <= 0){
+					if(NoeudsArrayTemp.size() == max+1){
+						noeudsTemp.remove(randomIndex);
+						Tour--;
+						continue p;		
+					}
+					randomNum = rand.nextInt((max) + 1);  	
+					if(!NoeudsArrayTemp.contains(randomNum)){
+						NoeudsArrayTemp.add(randomNum);
+					}
+				}
+			 	nombreMaximumArretesTemp[randomNum] -= 1;
+			  	nombreMaximumArretesTemp[noeud] -= 1;
+			  	Integer[] pair = {noeud,randomNum};
 				couples.add(pair);
 				currentCout += matriceCouts[noeud][randomNum];
 				if(currentCout > CoutMax){ //Si on depasse notre cout cible on arrete
@@ -284,10 +284,10 @@ public class algo {
 				g.addEdge(randomNum, noeud);
 				
 		    
-			if(nombreMaximumArretesTemp[noeud] == 0){
-				noeudsTemp.remove(randomIndex);
-				Tour--;
-			}
+				if(nombreMaximumArretesTemp[noeud] == 0){
+					noeudsTemp.remove(randomIndex);
+					Tour--;
+				}
 		
 		    break;
 			    
