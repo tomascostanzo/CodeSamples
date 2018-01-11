@@ -119,6 +119,7 @@ public class algo {
 				printTime = false;
 			}
 		}
+		// Execution infinie de l'algorithme
 		while(true){
 			calculCheminMinimal(Vues, etapes, entrees);
 			nombreMaximumArretesTemp = nombreMaximumArretes.clone(); //Faire calcul ici
@@ -158,23 +159,22 @@ public class algo {
 			for(int i=0; i<noeuds.size(); i++){ //Parcourir tous les noeuds
 				finis = false;
 				int T = typesArray[i];
-				switch (T) { //Selon le type de noeud on verifie si on a satisfait les contraintes minimales
-				
-				case 1:
-					if(nombreMaximumArretes[i] - nombreMaximumArretesTemp[i] >= 1){
-						finis = true;
-					}
-					break;
-				case 2:
-					if(nombreMaximumArretes[i] - nombreMaximumArretesTemp[i] >= 1){
-						finis = true;
-					}
-					break;
-				case 3: 
-					if(nombreMaximumArretes[i] - nombreMaximumArretesTemp[i] >= 2){
-						finis = true;
-					}
-					break;
+				switch (T) { //Selon le type de noeud on verifie si on a satisfait les contraintes minimales		
+					case 1:
+						if(nombreMaximumArretes[i] - nombreMaximumArretesTemp[i] >= 1){
+							finis = true;
+						}
+						break;
+					case 2:
+						if(nombreMaximumArretes[i] - nombreMaximumArretesTemp[i] >= 1){
+							finis = true;
+						}
+						break;
+					case 3: 
+						if(nombreMaximumArretes[i] - nombreMaximumArretesTemp[i] >= 2){
+							finis = true;
+						}
+						break;
 				}
 				
 				if(!finis){
@@ -354,7 +354,7 @@ public class algo {
 		}
 		
 		boolean lienMinimumValide = false;
-		String MinimumValide = "valide";
+		boolean MinimumValide = true;
 		
 		//Ici on verifie si chaque Etape contient un minimum de 2 liens
 		for (Integer etape : etapes) {//ETAPES
@@ -363,13 +363,13 @@ public class algo {
 				lienMinimumValide = true;
 			}
 			if(!lienMinimumValide){
-				MinimumValide = "not valide";
+				MinimumValide = false;
 				break;
 			}		
 		}
 		
 		boolean linked = false;
-		String valide = "valide";
+		boolean valide = true;
 		
 		//Ici on verifie si chaque Etape est connectee a au moins une entree
 		for (Integer etape : etapes) {//ETAPES
@@ -381,7 +381,7 @@ public class algo {
 				}			
 			}	
 			if(!linked){
-				valide = "not valide";
+				valide = false;
 				break;
 			}
 		}
@@ -396,13 +396,13 @@ public class algo {
 				}			
 			}	
 			if(!linked){
-				valide = "not valide";
+				valide = false;
 				break;
 			}
 		}	
 		
 		//Si notre resultat est valide et est le meilleur trouvee on le garde
-		if(currentCout < CoutMax && valide == "valide" && MinimumValide == "valide"){	 
+		if(currentCout < CoutMax && valide == true && MinimumValide == true){	 
 			CoutMax = currentCout;
 			System.out.println("-----------------------------------------------");
 			System.out.println("Cout: " + CoutMax);
@@ -424,16 +424,28 @@ public class algo {
 			if(printTime  == true){
 				System.out.println("");
 				System.out.println("Temps de Calcul (Nanosecondes) : " + tempsCalcul);
-			}
-			
+			}		
 			System.out.println("-----------------------------------------------");		
 		}
 		
 		return;
 	}
+
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn containsSubArray(ArrayList<Integer[]> couples, Integer[] pairTest) 
+	///
+	/// Algorithme qui verifie si la pair de noeuds appartient a la liste de couples
+	///
+	/// @param[in] ArrayList<Integer[]> couples : Couples
+	/// @param[in] Integer[] pairTest : Pair de noeuds
+	///
+	/// @return Aucun (fonction void).
+	///
+	////////////////////////////////////////////////////////////////////////
 	
-	public static boolean containsSubArray(ArrayList<Integer[]> couples2, Integer[] pairTest) {
-		for ( Integer[] arr : couples2 ) {
+	public static boolean containsSubArray(ArrayList<Integer[]> couples, Integer[] pairTest) {
+		for ( Integer[] arr : couples ) {
 			if (Arrays.equals(arr, pairTest)) {
 				return true;
 		    }
@@ -445,6 +457,7 @@ public class algo {
 //-------------------------------------------------------------
 
 //This class represents a directed graph using adjacency list
+//This code is contributed by Aakash Hasija
 //representation
 class Graph
 {
