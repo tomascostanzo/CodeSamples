@@ -49,7 +49,7 @@ public class algo {
 	  ArrayList<Integer> etapes = new ArrayList<Integer>();
 	  noeuds = new ArrayList<Integer>();
 	    	
-	  //Scanner
+		//Scanner
 		Scanner s = new Scanner(new File(args[0]));
 	
 		if(s.hasNext()){
