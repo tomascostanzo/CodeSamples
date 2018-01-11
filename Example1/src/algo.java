@@ -30,14 +30,14 @@ public class algo {
 	// Initialisation de attributs
 	static Random rand = new Random();
 	static int max = 0;
-  static double CoutMax = 0;   
-  static int nbrPoints = 0;
-  static long startTime = 0;
-  static boolean printTime = false;
-  static double[][] matriceCouts = null; //Matrice des couts n*n
-  static Integer[] typesArray = null;
-  static ArrayList<Integer> noeuds = null;
-  static int[] nombreMaximumArretesTemp = null;
+	static double CoutMax = 0;   
+	static int nbrPoints = 0;
+	static long startTime = 0;
+	static boolean printTime = false;
+	static double[][] matriceCouts = null; //Matrice des couts n*n
+	static Integer[] typesArray = null;
+	static ArrayList<Integer> noeuds = null;
+	static int[] nombreMaximumArretesTemp = null;
 
 	public static void main(String[] args) throws FileNotFoundException {
     	
