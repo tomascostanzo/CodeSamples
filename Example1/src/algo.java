@@ -107,8 +107,6 @@ public class algo {
 		
 		//Debuter le calcul de temps
 		startTime = System.nanoTime();
-		nombreMaximumArretesTemp = new int[nombreMaximumArretes.length];
-		
 		nombreMaximumArretesTemp = nombreMaximumArretes.clone();
 		
 		final long tempsCalcul = System.nanoTime() - startTime;
