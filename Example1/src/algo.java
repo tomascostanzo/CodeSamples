@@ -30,26 +30,26 @@ public class algo {
 	// Initialisation de attributs
 	static Random rand = new Random();
 	static int max = 0;
-    static double CoutMax = 0;   
-    static int nbrPoints = 0;
-    static long startTime = 0;
-    static boolean printTime = false;
-    static double[][] matriceCouts = null; //Matrice des couts n*n
-    static Integer[] typesArray = null;
-    static ArrayList<Integer> noeuds = null;
-    static int[] nombreMaximumArretesTemp = null;
+  static double CoutMax = 0;   
+  static int nbrPoints = 0;
+  static long startTime = 0;
+  static boolean printTime = false;
+  static double[][] matriceCouts = null; //Matrice des couts n*n
+  static Integer[] typesArray = null;
+  static ArrayList<Integer> noeuds = null;
+  static int[] nombreMaximumArretesTemp = null;
 
 	public static void main(String[] args) throws FileNotFoundException {
     	
-        int[] nombreMaximumArretes = null;//Nombre maximum d'arretes par point	
-        int minLinks = 0;
-        //liste de types de noeud
-      	ArrayList<Integer> Vues = new ArrayList<Integer>();
-      	ArrayList<Integer> entrees = new ArrayList<Integer>();
-      	ArrayList<Integer> etapes = new ArrayList<Integer>();
-      	noeuds = new ArrayList<Integer>();
+    int[] nombreMaximumArretes = null;//Nombre maximum d'arretes par point	
+    int minLinks = 0;
+    //liste de types de noeud
+    ArrayList<Integer> Vues = new ArrayList<Integer>();
+    ArrayList<Integer> entrees = new ArrayList<Integer>();
+    ArrayList<Integer> etapes = new ArrayList<Integer>();
+    noeuds = new ArrayList<Integer>();
       	
-        //Scanner
+    //Scanner
 		Scanner s = new Scanner(new File(args[0]));
 	
 		if(s.hasNext()){
@@ -203,22 +203,22 @@ public class algo {
 					continue p;
 				}
 		    	
-			    randomNum = rand.nextInt((max) + 1); //entre 0 et max de entrees et etapes
-			    ArrayList<Integer> NoeudsArrayTemp = new ArrayList<Integer>();
-			    while(nombreMaximumArretesTemp[randomNum] <= 0){
-			    	if(NoeudsArrayTemp.size() == max+1){
-			    		noeudsTemp.remove(randomIndex);
-			    		Tour--;
-			    		continue p;		
-			    	}
-			    	randomNum = rand.nextInt((max) + 1);  	
-			    	if(!NoeudsArrayTemp.contains(randomNum)){
-			    		NoeudsArrayTemp.add(randomNum);
-			    	}
-			    }
-			    nombreMaximumArretesTemp[randomNum] -= 1;
-			    nombreMaximumArretesTemp[noeud] -= 1;
-			    Integer[] pair = {noeud,randomNum};
+			  randomNum = rand.nextInt((max) + 1); //entre 0 et max de entrees et etapes
+			  ArrayList<Integer> NoeudsArrayTemp = new ArrayList<Integer>();
+			  while(nombreMaximumArretesTemp[randomNum] <= 0){
+			  	if(NoeudsArrayTemp.size() == max+1){
+			  		noeudsTemp.remove(randomIndex);
+			  		Tour--;
+			  		continue p;		
+			  	}
+			  	randomNum = rand.nextInt((max) + 1);  	
+			  	if(!NoeudsArrayTemp.contains(randomNum)){
+			  		NoeudsArrayTemp.add(randomNum);
+			  	}
+			  }
+			  nombreMaximumArretesTemp[randomNum] -= 1;
+			  nombreMaximumArretesTemp[noeud] -= 1;
+			  Integer[] pair = {noeud,randomNum};
 				couples.add(pair);
 				currentCout += matriceCouts[noeud][randomNum];
 				if(currentCout > CoutMax){ //Si on depasse notre cout cible on arrete
@@ -241,42 +241,42 @@ public class algo {
 					continue p;
 				}
 				
-			    randomNum = rand.nextInt((max + Vues.size()) + 1); //entre 0 et max de entrees et etapes
-			    
-		    	Integer[] pairTest = new Integer[2];
-		    	pairTest[0] = noeud;
-		    	pairTest[1] = randomNum;
-		    	
-		    	Integer[] pairTest2 = new Integer[2];
-		    	pairTest2[0] = randomNum;
-		    	pairTest2[1] = noeud;
-		    	
-		    	ArrayList<Integer> test = new ArrayList<Integer>();
+			  randomNum = rand.nextInt((max + Vues.size()) + 1); //entre 0 et max de entrees et etapes
+			  
+		    Integer[] pairTest = new Integer[2];
+		    pairTest[0] = noeud;
+		    pairTest[1] = randomNum;
+		    
+		    Integer[] pairTest2 = new Integer[2];
+		    pairTest2[0] = randomNum;
+		    pairTest2[1] = noeud;
+		    
+		    ArrayList<Integer> test = new ArrayList<Integer>();
 
-		    	//On continue si on a pas trouve un bon candidat
-			    while(nombreMaximumArretesTemp[randomNum] <= 0 || randomNum == noeud || containsSubArray(couples, pairTest) || containsSubArray(couples, pairTest2)){
+		    //On continue si on a pas trouve un bon candidat
+			  while(nombreMaximumArretesTemp[randomNum] <= 0 || randomNum == noeud || containsSubArray(couples, pairTest) || containsSubArray(couples, pairTest2)){
 			
-			    	if(test.size() == max + Vues.size() + 1){
-			    		noeudsTemp.remove(randomIndex);
-			    		Tour--;
-			    		continue p;		
-			    	}
-			    	
-			    	randomNum = rand.nextInt((max + Vues.size()) + 1); 
-			    	
-			    	if(!test.contains(randomNum)){
-			    		test.add(randomNum);
-			    	}
-			    	
-			    	pairTest[0] = noeud;
-			    	pairTest[1] = randomNum;
-			    	
-			    	pairTest2[0] = randomNum;
-			    	pairTest2[1] = noeud;
-			    }
-			    nombreMaximumArretesTemp[randomNum] -= 1;
-			    nombreMaximumArretesTemp[noeud] -= 1;
-			    Integer[] pair2 = {noeud,randomNum};
+			  	if(test.size() == max + Vues.size() + 1){
+			  		noeudsTemp.remove(randomIndex);
+			  		Tour--;
+			  		continue p;		
+			  	}
+			  	
+			  	randomNum = rand.nextInt((max + Vues.size()) + 1); 
+			  	
+			  	if(!test.contains(randomNum)){
+			  		test.add(randomNum);
+			  	}
+			  	
+			  	pairTest[0] = noeud;
+			  	pairTest[1] = randomNum;
+			  	
+			  	pairTest2[0] = randomNum;
+			  	pairTest2[1] = noeud;
+			  }
+			  nombreMaximumArretesTemp[randomNum] -= 1;
+			  nombreMaximumArretesTemp[noeud] -= 1;
+			  Integer[] pair2 = {noeud,randomNum};
 				couples.add(pair2);
 				currentCout += matriceCouts[noeud][randomNum]; 
 				if(currentCout > CoutMax){ //Si on depasse notre cout cible on arrete
@@ -301,39 +301,39 @@ public class algo {
 					continue p;//Si l'entree a deja satisfait ces liens on arrete
 				}
 				
-			    randomNum = rand.nextInt(((max + Vues.size()) - entrees.size()) + 1) + entrees.size(); //entre entrees max et max de entrees et etapes
-		    	Integer[] pairTest3 = new Integer[2];
-		    	pairTest3[0] = noeud;
-		    	pairTest3[1] = randomNum;
-		    	
-		    	Integer[] pairTest4 = new Integer[2];
-		    	pairTest4[0] = randomNum;
-		    	pairTest4[1] = noeud;
-		    	ArrayList<Integer> test2 = new ArrayList<Integer>();
-		    	
-		    	//On continue si on a pas trouve un bon candidat
-			    while(nombreMaximumArretesTemp[randomNum] <= 0 || containsSubArray(couples, pairTest3) || containsSubArray(couples, pairTest4)){
+			  randomNum = rand.nextInt(((max + Vues.size()) - entrees.size()) + 1) + entrees.size(); //entre entrees max et max de entrees et etapes
+		    Integer[] pairTest3 = new Integer[2];
+		    pairTest3[0] = noeud;
+		    pairTest3[1] = randomNum;
+		    
+		    Integer[] pairTest4 = new Integer[2];
+		    pairTest4[0] = randomNum;
+		    pairTest4[1] = noeud;
+		    ArrayList<Integer> test2 = new ArrayList<Integer>();
+		    
+		    //On continue si on a pas trouve un bon candidat
+			  while(nombreMaximumArretesTemp[randomNum] <= 0 || containsSubArray(couples, pairTest3) || containsSubArray(couples, pairTest4)){
 		
-			    	if(test2.size() == max + Vues.size() + 1 - entrees.size()){
-			    		noeudsTemp.remove(randomIndex);
-			    		Tour--;
-			    		continue p;    		
-			    	}
+			  	if(test2.size() == max + Vues.size() + 1 - entrees.size()){
+			  		noeudsTemp.remove(randomIndex);
+			  		Tour--;
+			  		continue p;    		
+			  	}
 	
-			    	randomNum = rand.nextInt(((max + Vues.size()) - entrees.size()) + 1) + entrees.size();
-			    	
-			    	if(!test2.contains(randomNum)){
-			    		test2.add(randomNum);
-			    	}
-			    	
-			    	pairTest3[0] = noeud;
-			    	pairTest3[1] = randomNum;
-			    	pairTest4[0] = randomNum;
-			    	pairTest4[1] = noeud;
-			    }
-			    nombreMaximumArretesTemp[randomNum] -= 1;
-			    nombreMaximumArretesTemp[noeud] -= 1;
-			    Integer[] pair3 = {noeud,randomNum};
+			  	randomNum = rand.nextInt(((max + Vues.size()) - entrees.size()) + 1) + entrees.size();
+			  	
+			  	if(!test2.contains(randomNum)){
+			  		test2.add(randomNum);
+			  	}
+			  	
+			  	pairTest3[0] = noeud;
+			  	pairTest3[1] = randomNum;
+			  	pairTest4[0] = randomNum;
+			  	pairTest4[1] = noeud;
+			  }
+			  nombreMaximumArretesTemp[randomNum] -= 1;
+			  nombreMaximumArretesTemp[noeud] -= 1;
+			  Integer[] pair3 = {noeud,randomNum};
 				couples.add(pair3);
 				currentCout += matriceCouts[noeud][randomNum];
 				if(currentCout > CoutMax){ //Si on depasse notre cout cible on arrete
@@ -450,70 +450,70 @@ public class algo {
 //representation
 class Graph
 {
- private int V;   // No. of vertices
- private LinkedList<Integer> adj[]; //Adjacency List
+ 	private int V;   // No. of vertices
+ 	private LinkedList<Integer> adj[]; //Adjacency List
 
- //Constructor
- Graph(int v)
- {
-     V = v;
-     adj = new LinkedList[v];
-     for (int i=0; i<v; ++i)
-         adj[i] = new LinkedList();
- }
+ 	//Constructor
+ 	Graph(int v)
+ 	{
+    V = v;
+    adj = new LinkedList[v];
+    for (int i=0; i<v; ++i)
+      adj[i] = new LinkedList();
+ 	}
 
- //Function to add an edge into the graph
- void addEdge(int v,int w)  {   adj[v].add(w);   }
+ 	//Function to add an edge into the graph
+ 	void addEdge(int v,int w)  {   adj[v].add(w);   }
 
- //prints BFS traversal from a given source s
- Boolean isReachable(int s, int d)
- {
-     LinkedList<Integer>temp;
+ 	//prints BFS traversal from a given source s
+	Boolean isReachable(int s, int d)
+ 	{
+    LinkedList<Integer>temp;
 
-     // Mark all the vertices as not visited(By default set
-     // as false)
-     boolean visited[] = new boolean[V];
+    // Mark all the vertices as not visited(By default set
+    // as false)
+    boolean visited[] = new boolean[V];
 
-     // Create a queue for BFS
-     LinkedList<Integer> queue = new LinkedList<Integer>();
+    // Create a queue for BFS
+    LinkedList<Integer> queue = new LinkedList<Integer>();
 
-     // Mark the current node as visited and enqueue it
-     visited[s]=true;
-     queue.add(s);
+    // Mark the current node as visited and enqueue it
+    visited[s]=true;
+    queue.add(s);
 
-     // 'i' will be used to get all adjacent vertices of a vertex
-     Iterator<Integer> i;
-     while (queue.size()!=0)
-     {
-         // Dequeue a vertex from queue and print it
-         s = queue.poll();
+    // 'i' will be used to get all adjacent vertices of a vertex
+    Iterator<Integer> i;
+    while (queue.size()!=0)
+    {
+      // Dequeue a vertex from queue and print it
+      s = queue.poll();
 
-         int n;
-         i = adj[s].listIterator();
+      int n;
+      i = adj[s].listIterator();
 
-         // Get all adjacent vertices of the dequeued vertex s
-         // If a adjacent has not been visited, then mark it
-         // visited and enqueue it
-         while (i.hasNext())
-         {
-             n = i.next();
+      // Get all adjacent vertices of the dequeued vertex s
+      // If a adjacent has not been visited, then mark it
+      // visited and enqueue it
+      while (i.hasNext())
+      {
+        n = i.next();
 
-             // If this adjacent node is the destination node,
-             // then return true
-             if (n==d)
-                 return true;
+        // If this adjacent node is the destination node,
+        // then return true
+        if (n==d)
+          return true;
 
-             // Else, continue to do BFS
-             if (!visited[n])
-             {
-                 visited[n] = true;
-                 queue.add(n);
-             }
-         }
-     }
+        // Else, continue to do BFS
+        if (!visited[n])
+        {
+          visited[n] = true;
+          queue.add(n);
+        }
+      }
+    }
 
-     // If BFS is complete without visited d
-     return false;
+    // If BFS is complete without visited d
+    return false;
  }
 
 }
