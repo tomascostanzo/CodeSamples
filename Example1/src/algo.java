@@ -40,16 +40,16 @@ public class algo {
 	static int[] nombreMaximumArretesTemp = null;
 
 	public static void main(String[] args) throws FileNotFoundException {
-    	
-    int[] nombreMaximumArretes = null;//Nombre maximum d'arretes par point	
-    int minLinks = 0;
-    //liste de types de noeud
-    ArrayList<Integer> Vues = new ArrayList<Integer>();
-    ArrayList<Integer> entrees = new ArrayList<Integer>();
-    ArrayList<Integer> etapes = new ArrayList<Integer>();
-    noeuds = new ArrayList<Integer>();
-      	
-    //Scanner
+	  	
+	  int[] nombreMaximumArretes = null;//Nombre maximum d'arretes par point	
+	  int minLinks = 0;
+	  //liste de types de noeud
+	  ArrayList<Integer> Vues = new ArrayList<Integer>();
+	  ArrayList<Integer> entrees = new ArrayList<Integer>();
+	  ArrayList<Integer> etapes = new ArrayList<Integer>();
+	  noeuds = new ArrayList<Integer>();
+	    	
+	  //Scanner
 		Scanner s = new Scanner(new File(args[0]));
 	
 		if(s.hasNext()){
